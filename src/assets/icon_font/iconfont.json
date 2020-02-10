@@ -1,0 +1,23 @@
+{
+  "id": "1633083",
+  "name": "云音乐webapp 模仿",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4933224",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e6f6",
+      "unicode_decimal": 59126
+    },
+    {
+      "icon_id": "5171682",
+      "name": "耳机",
+      "font_class": "icon-",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    }
+  ]
+}
