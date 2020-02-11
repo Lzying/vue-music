@@ -39,7 +39,7 @@ export default {
     this.audio.src = this.playSongUrl;
     this.audio.loop = "loop";
     // this.audio.controls = "controls";
-    // this.audio.autoplay = true;
+    this.audio.autoplay = true;
     //更改src后需要重新加载音乐
     this.audio.load();
     // // audio.play();
