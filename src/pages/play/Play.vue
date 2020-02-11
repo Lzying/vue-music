@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosFunction from "@/common/axios/axios-common";
 export default {
   name: "Play",
   data() {
@@ -30,7 +30,7 @@ export default {
   },
   mounted: function() {
     // eslint-disable-next-line no-console
-    console.log('刷新');
+    console.log("刷新");
     // `this` 指向 vm 实例
     let id = this.$route.params.id;
     this.playSongUrl = `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
@@ -49,24 +49,22 @@ export default {
     // // audio.play();
   },
   destroyed: function() {
-        // eslint-disable-next-line no-console
-    console.log('清楚');
+    // eslint-disable-next-line no-console
+    console.log("清楚");
     // 暂停播放并释放audio
     this.audio.pause();
     this.audio = null;
   },
   methods: {
     getSong(id) {
-      axios
-        .get(`http://106.12.121.105:3000/song/detail?ids=${id}`)
-        .then(data => {
-          this.img = data.data.songs[0].al.picUrl;
-          this.song = data.data.songs[0];
-          this.songName = this.song.name;
-          this.songArName = this.song.ar[0].name;
-          // eslint-disable-next-line no-console
-          console.log(data.data.songs[0].al.picUrl);
-        });
+      axiosFunction.getSong(id).then(data => {
+        this.img = data.songs[0].al.picUrl;
+        this.song = data.songs[0];
+        this.songName = this.song.name;
+        this.songArName = this.song.ar[0].name;
+        // eslint-disable-next-line no-console
+        console.log(data.songs[0].al.picUrl);
+      });
     }
   }
 };

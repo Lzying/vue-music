@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosFunction from "@/common/axios/axios-common";
 export default {
   name: "Hot",
   data() {
@@ -51,12 +51,15 @@ export default {
   },
   methods: {
     getHotSonglist() {
-      axios.get("http://106.12.121.105:3000/top/list?idx=1").then(data => {
-        this.alList = data.data.playlist.tracks;
+      axiosFunction.getHotSonglist().then(data => {
+        this.alList = data.playlist.tracks;
         this.hotSonglist = this.alList.slice(0, 20);
         // eslint-disable-next-line no-console
         console.log(data);
-      });
+      }).catch(err => {
+            // eslint-disable-next-line no-console
+            console.log(err)
+        });
     },
     all() {
       this.hotSonglist = this.alList;

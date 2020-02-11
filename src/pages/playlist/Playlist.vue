@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosFunction from "@/common/axios/axios-common";
 export default {
   name: "Playlist",
   data() {
@@ -60,19 +60,16 @@ export default {
   },
   methods: {
     getSong(id) {
-      axios
-        .get(`http://106.12.121.105:3000/playlist/detail?id=${id}`)
-        .then(data => {
-          // eslint-disable-next-line no-console
-          console.log(data);
-
-          this.list = data.data.playlist;
-          this.playList = this.list.tracks;
-          this.coverImgUrl = this.list.coverImgUrl;
-          this.playListName = this.list.name;
-          this.updateFrequency = this.list.updateFrequency;
-          this.description = this.list.description;
-        });
+      axiosFunction.getSongList(id).then(data => {
+        // eslint-disable-next-line no-console
+        console.log(data);
+        this.list = data.playlist;
+        this.playList = this.list.tracks;
+        this.coverImgUrl = this.list.coverImgUrl;
+        this.playListName = this.list.name;
+        this.updateFrequency = this.list.updateFrequency;
+        this.description = this.list.description;
+      });
     }
   }
 };

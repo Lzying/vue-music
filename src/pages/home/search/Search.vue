@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosFunction from "@/common/axios/axios-common";
 export default {
   name: "Search",
   data() {
@@ -47,13 +47,11 @@ export default {
   },
   methods: {
     getSearchData(value) {
-      axios
-        .get(`http://106.12.121.105:3000/search?keywords=${value}`)
-        .then(data => {
-          // eslint-disable-next-line no-console
-          console.log(data);
-          this.searchList = data.data.result.songs;
-        });
+      axiosFunction.getSearchData(value).then(data => {
+        // eslint-disable-next-line no-console
+        console.log(data);
+        this.searchList = data.result.songs;
+      });
     },
     inputFunction() {
       // eslint-disable-next-line no-console

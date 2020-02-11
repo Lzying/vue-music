@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosFunction from "@/common/axios/axios-common";
 export default {
   name: "Recommend",
   data() {
@@ -67,17 +67,15 @@ export default {
   },
   methods: {
     getPersonalizedData() {
-      axios.get("http://106.12.121.105:3000/personalized").then(data => {
-        this.recomendlist = data.data.result.slice(0, 6);
+     axiosFunction.getPersonalizedData().then(data => {
+        this.recomendlist = data.result.slice(0, 6);
         // eslint-disable-next-line no-console
         console.log(this.recomendlist);
       });
     },
     getPersonalizedNewsongData() {
-      axios
-        .get("http://106.12.121.105:3000/personalized/newsong")
-        .then(data => {
-          this.newSonglist = data.data.result.slice(0, 10);
+      axiosFunction.getPersonalizedNewsongData().then(data => {
+          this.newSonglist = data.result.slice(0, 10);
           // eslint-disable-next-line no-console
           console.log(this.newSonglist);
         });
