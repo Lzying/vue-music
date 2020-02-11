@@ -80,13 +80,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.playlist {
-  /* position: fixed;
+/* .playlist {
+  position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
-  right: 0px; */
-}
+  right: 0px;
+} */
 .playlist-title {
   width: 100%;
   height: 210px;
