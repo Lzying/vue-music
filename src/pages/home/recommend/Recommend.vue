@@ -80,7 +80,14 @@ export default {
   },
   filters: {
     capitalize: function(value) {
-      return (value / 10000).toFixed(2) + "万";
+      let sum = +value;
+      if (sum >= 100000000) {
+        return (sum / 100000000).toFixed(2) + "亿";
+      } else if (sum >= 10000) {
+        return (sum / 10000).toFixed(2) + "万";
+      } else {
+        return sum;
+      }
     }
   }
 };

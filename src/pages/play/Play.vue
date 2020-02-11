@@ -6,8 +6,8 @@
       </div>
       <div>
         <p class="flex_center">
-          <span style="font-size:18px;">{{song.name }}-</span>
-          <span>{{song.ar[0].name }}</span>
+          <span style="font-size:18px;">{{songName }}-</span>
+          <span>{{songArName}}</span>
         </p>
       </div>
     </div>
@@ -23,10 +23,14 @@ export default {
       playSongUrl: 0,
       audio: null,
       img: "",
-      song: null
+      songName: "",
+      songArName: "",
+      song: Object
     };
   },
   mounted: function() {
+    // eslint-disable-next-line no-console
+    console.log('刷新');
     // `this` 指向 vm 实例
     let id = this.$route.params.id;
     this.playSongUrl = `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
@@ -45,6 +49,8 @@ export default {
     // // audio.play();
   },
   destroyed: function() {
+        // eslint-disable-next-line no-console
+    console.log('清楚');
     // 暂停播放并释放audio
     this.audio.pause();
     this.audio = null;
@@ -56,6 +62,8 @@ export default {
         .then(data => {
           this.img = data.data.songs[0].al.picUrl;
           this.song = data.data.songs[0];
+          this.songName = this.song.name;
+          this.songArName = this.song.ar[0].name;
           // eslint-disable-next-line no-console
           console.log(data.data.songs[0].al.picUrl);
         });

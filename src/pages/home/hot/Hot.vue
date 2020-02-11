@@ -8,30 +8,30 @@
       </div>
     </div>
     <div style="width:100%;margin:0px 0px">
-      <div
-        class="flex_between"
-        v-for="(item,i) of hotSonglist"
-        :key="i"
-        style="width:100%;padding:10px; border-bottom:1px solid beige;"
-      >
-        <div class="flex_start">
-          <div style="width:25px;color:#888" v-bind:class="{'index_red':i<3}">{{i | capitalize}}</div>
-          <div>
-            <div class="line_clamp_1" style="font-size:17px;">{{item.name}}</div>
-            <div
-              class="line_clamp_1"
-              style="font-size: 12px;color: #888;padding-top:5px"
-            >{{item.ar[0].name}} - {{item.al.name}}</div>
+      <div v-for="(item,i) of hotSonglist" :key="i">
+        <router-link
+          tag="div"
+          :to="'/play/'+item.id"
+          class="flex_between"
+          style="width:100%;padding:10px; border-bottom:1px solid beige;"
+        >
+          <div class="flex_start">
+            <div style="width:30px;color:#888" v-bind:class="{'index_red':i<3}">{{i | capitalize}}</div>
+            <div>
+              <div class="line_clamp_1" style="font-size:17px;">{{item.name}}</div>
+              <div
+                class="line_clamp_1"
+                style="font-size: 12px;color: #888;padding-top:5px"
+              >{{item.ar[0].name}} - {{item.al.name}}</div>
+            </div>
           </div>
-        </div>
-        <div class="flex_center" style="height:100%;">
-          <span class="iconfont iconbofang" style="font-size:26px;color: #888;"></span>
-        </div>
+          <div class="flex_center" style="height:100%;">
+            <span class="iconfont iconbofang" style="font-size:26px;color: #888;"></span>
+          </div>
+        </router-link>
       </div>
     </div>
-    <div class="flex_center" style="margin:20px; color:#888;font-size:13px">
-      查看完整榜单 >
-    </div>
+    <div class="flex_center" @click="all" style="margin:20px; color:#888;font-size:13px">查看完整榜单 ></div>
   </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
   name: "Hot",
   data() {
     return {
+      alList: [],
       hotSonglist: []
     };
   },
@@ -51,10 +52,14 @@ export default {
   methods: {
     getHotSonglist() {
       axios.get("http://106.12.121.105:3000/top/list?idx=1").then(data => {
-        this.hotSonglist = data.data.playlist.tracks.slice(0, 20);
+        this.alList = data.data.playlist.tracks;
+        this.hotSonglist = this.alList.slice(0, 20);
         // eslint-disable-next-line no-console
         console.log(data);
       });
+    },
+    all() {
+      this.hotSonglist = this.alList;
     }
   },
   filters: {
