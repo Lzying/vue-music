@@ -1,7 +1,7 @@
 <template>
   <div class="hot">
     <div class="hot-title-box">
-      <img src="../../assets/images/hot_music_bg_2x.jpg" alt style="width:100%" />
+      <img src="../../../assets/images/hot_music_bg_2x.jpg" alt style="width:100%" />
       <div style="  position: absolute;top: 0px;width:100%;height:100%;padding:20px;">
         <div class="hot-title-name"></div>
         <p style="font-size:12px;color:white">更新日期：02月06日</p>
@@ -79,7 +79,7 @@ export default {
 .hot-title-name {
   width: 142px;
   height: 67px;
-  background: url("../../assets/images/index_icon_2x.png") no-repeat;
+  background: url("../../../assets/images/index_icon_2x.png") no-repeat;
   background-position: -24px -30px;
   background-size: 166px 97px;
 }

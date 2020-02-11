@@ -5,14 +5,15 @@ import VueRouter from 'vue-router'
 
 const routes = [
     {
-        path: '/', name: 'page', component: () => import('../pages/Page.vue'),
+        path: '/', name: 'home', component: () => import('../pages/home/Home.vue'),
         children: [
             { path: '', redirect: '/recommend' },
-            { path: 'recommend', component: () => import('../pages/recommend/Recommend.vue') },
-            { path: 'hot', component: () => import('../pages/hot/Hot.vue') },
-            { path: 'search', component: () => import('../pages/search/Search.vue') }
+            { path: 'recommend', component: () => import('../pages/home/recommend/Recommend.vue') },
+            { path: 'hot', component: () => import('../pages/home/hot/Hot.vue') },
+            { path: 'search', component: () => import('../pages/home/search/Search.vue') }
         ]
     },
+    { path: '/play/:id', name: 'play', component: () => import('../pages/play/Play.vue') },
     { path: '*', redirect: '/' },
 
     // {

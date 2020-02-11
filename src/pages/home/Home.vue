@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Head from "../common/components/head/Head";
+import Head from "../../common/components/head/Head";
 
 export default {
   name: "Page",

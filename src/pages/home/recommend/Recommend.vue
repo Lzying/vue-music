@@ -21,22 +21,24 @@
     <div style="width:100%;margin:30px 0px">
       <p style=" border-left:2px solid #d43c33;padding:0px 5px; ">最新音乐</p>
       <div style="width:100%">
-        <div
-          class="flex_between"
-          v-for="(item,i) of newSonglist"
-          :key="i"
-          style="width:100%;padding:10px; border-bottom:1px solid beige;"
-        >
-          <div>
-            <div class="line_clamp_1" style="font-size:17px;">{{item.name}}</div>
-            <div
-              class="line_clamp_1"
-              style="font-size: 12px;color: #888;padding-top:5px"
-            >{{item.song.artists[0].name}} - {{item.song.album.name}}</div>
-          </div>
-          <div class="flex_center" style="height:100%;">
-            <span class="iconfont iconbofang" style="font-size:26px;color: #888;"></span>
-          </div>
+        <div v-for="(item,i) of newSonglist" :key="i" style="width:100%;">
+          <router-link
+            tag="div"
+            :to="'/play/'+item.id"
+            class="flex_between"
+            style="width:100%;padding:10px; border-bottom:1px solid beige;"
+          >
+            <div>
+              <div class="line_clamp_1" style="font-size:17px;">{{item.name}}</div>
+              <div
+                class="line_clamp_1"
+                style="font-size: 12px;color: #888;padding-top:5px"
+              >{{item.song.artists[0].name}} - {{item.song.album.name}}</div>
+            </div>
+            <div class="flex_center" style="height:100%;">
+              <span class="iconfont iconbofang" style="font-size:26px;color: #888;"></span>
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
