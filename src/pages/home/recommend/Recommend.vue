@@ -5,14 +5,19 @@
       <p style=" border-left:2px solid #d43c33;padding:0px 5px; ">推荐歌单</p>
       <div class="flex_between_wrap_top">
         <div v-for="(item,i) of recomendlist" :key="i" style="width:33%;margin-top:5px">
-          <div style="width:100%; position: relative;">
-            <img :src="item.picUrl" style="width:100%" />
-            <div style="position:absolute;top:6px;right:5px;font-size:12px;color:white">
-              <span class="iconfont iconicon-"></span>
-              {{item.playCount | capitalize}}
+          <router-link tag="div" style="width:100%;" :to="'/playlist/'+item.id">
+            <div style="width:100%; position: relative;">
+              <img :src="item.picUrl" style="width:100%" />
+              <div style="position:absolute;top:6px;right:5px;font-size:12px;color:white">
+                <span class="iconfont iconicon-"></span>
+                {{item.playCount | capitalize}}
+              </div>
             </div>
-          </div>
-          <div class="line_clamp_2" style="padding:2px 5px;font-size:13px;color#333;">{{item.name}}</div>
+            <div
+              class="line_clamp_2"
+              style="padding:2px 5px;font-size:13px;color#333;"
+            >{{item.name}}</div>
+          </router-link>
         </div>
       </div>
     </div>

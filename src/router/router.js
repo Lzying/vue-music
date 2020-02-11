@@ -14,6 +14,7 @@ const routes = [
         ]
     },
     { path: '/play/:id', name: 'play', component: () => import('../pages/play/Play.vue') },
+    { path: '/playlist/:id', name: 'playlist', component: () => import('../pages/playlist/Playlist.vue') },
     { path: '*', redirect: '/' },
 
     // {
