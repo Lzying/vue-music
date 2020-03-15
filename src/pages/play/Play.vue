@@ -29,24 +29,7 @@ export default {
     };
   },
   mounted: function() {
-    // eslint-disable-next-line no-console
-    console.log("刷新");
-    // `this` 指向 vm 实例
-    let id = this.$route.params.id;
-    this.playSongUrl = `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
-    this.getSong(id);
-    // this.$refs.audio.autoplay = true;
-    // this.$refs.audio.src = this.playSongUrl;
-
-    // 播放
-    this.audio = new Audio();
-    this.audio.src = this.playSongUrl;
-    this.audio.loop = "loop";
-    // this.audio.controls = "controls";
-    this.audio.autoplay = true;
-    //更改src后需要重新加载音乐
-    this.audio.load();
-    // // audio.play();
+    this.play()
   },
   destroyed: function() {
     // eslint-disable-next-line no-console
@@ -55,7 +38,34 @@ export default {
     this.audio.pause();
     this.audio = null;
   },
+  watch: {
+    $route(to, from) { // 同一组件，刷新或者路由参数变化不会重新渲染组件，这样会导致生命钩子不在执行，所有通过watch来监听
+      // 对路由变化作出响应...
+      console.log(to, from);
+      this.play() 
+    }
+  },
   methods: {
+    play() {
+      // eslint-disable-next-line no-console
+      console.log("刷新");
+      // `this` 指向 vm 实例
+      let id = this.$route.params.id;
+      this.playSongUrl = `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
+      this.getSong(id);
+      // this.$refs.audio.autoplay = true;
+      // this.$refs.audio.src = this.playSongUrl;
+
+      // 播放
+      this.audio = new Audio();
+      this.audio.src = this.playSongUrl;
+      this.audio.loop = "loop";
+      // this.audio.controls = "controls";
+      this.audio.autoplay = true;
+      //更改src后需要重新加载音乐
+      this.audio.load();
+      // // audio.play();
+    },
     getSong(id) {
       axiosFunction.getSong(id).then(data => {
         this.img = data.songs[0].al.picUrl;

@@ -2,7 +2,9 @@
   <div class="page">
     <!-- <p>sdf</p> -->
     <Head style=" height: 124px;"></Head>
-    <router-view style=" height: calc(100% - 124px );overflow:scroll"></router-view>
+    <transition name="slide-fade">
+      <router-view style=" height: calc(100% - 124px );overflow:scroll"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -35,5 +37,17 @@ export default {
   left: 0px;
   right: 0px;
   bottom: 0px;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(1200px);
+  opacity: 0;
 }
 </style>
