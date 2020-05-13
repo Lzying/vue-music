@@ -47,20 +47,28 @@ const routes = [
 
 
 const router = new VueRouter({
-    routes // (缩写) 相当于 routes: routes
+    routes, // (缩写) 相当于 routes: routes
+    // scrollBehavior(to, from, savedPosition) {
+    //     // return 期望滚动到哪个的位置
+    //     console.log(to);
+    //     console.log(from);
+    //     console.log(savedPosition);
+    //     return { x: 0, y: 500 }
+
+    // }
 })
 
 router.beforeEach((to, from, next) => {
     // 全局，也可以在对应的路由中拦截
-    console.log(to);
-    console.log(from);
-    console.log(next);
+    // console.log(to);
+    // console.log(from);
+    // console.log(next);
     next();
 })
 router.afterEach((to, from) => {
     // 全局，也可以在对应的路由中拦截
-    console.log(to);
-    console.log(from);
+    // console.log(to);
+    // console.log(from);
 })
 export default router
 

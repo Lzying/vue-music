@@ -1,7 +1,7 @@
 <template>
   <div class="head">
     <div class="header flex_between">
-      <div class="title">模仿网易云音乐（仅用与学习）</div>
+      <div class="title">{{myTitle}}</div>
       <div class="my-bt" @click="gotoothertest()">下载APP</div>
     </div>
     <div class="head-nav flex_around">
@@ -30,6 +30,7 @@
 <script>
 export default {
   name: "Head",
+  props:['myTitle'],
   methods:{
     gotoothertest(){
 

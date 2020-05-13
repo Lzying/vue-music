@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <!-- <p>sdf</p> -->
-    <Head style=" height: 124px;"></Head>
+    <Head style=" height: 124px;" :myTitle="'模仿网易云音乐（仅用与学习）'" ></Head>
     <transition name="slide-fade">
       <router-view style=" height: calc(100% - 124px );overflow:scroll"></router-view>
     </transition>
